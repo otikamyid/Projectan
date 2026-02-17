@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface CardProps {
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
   variant?: 'default' | 'bordered' | 'elevated';
 }
 
-export function Card({ children, className = '', variant = 'default' }: CardProps) {
+export function Card({ children, className = '', variant = 'default', ...props }: CardProps) {
   const variants = {
     default: 'bg-white',
     bordered: 'bg-white border-2 border-gray-100',
@@ -14,35 +14,35 @@ export function Card({ children, className = '', variant = 'default' }: CardProp
   };
 
   return (
-    <div className={`rounded-2xl ${variants[variant]} ${className}`}>
+    <div className={`rounded-2xl ${variants[variant]} ${className}`} {...props}>
       {children}
     </div>
   );
 }
 
-interface CardHeaderProps {
+interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
 }
 
-export function CardHeader({ children, className = '' }: CardHeaderProps) {
-  return <div className={`p-6 pb-4 ${className}`}>{children}</div>;
+export function CardHeader({ children, className = '', ...props }: CardHeaderProps) {
+  return <div className={`p-6 pb-4 ${className}`} {...props}>{children}</div>;
 }
 
-interface CardContentProps {
+interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
 }
 
-export function CardContent({ children, className = '' }: CardContentProps) {
-  return <div className={`p-6 ${className}`}>{children}</div>;
+export function CardContent({ children, className = '', ...props }: CardContentProps) {
+  return <div className={`p-6 ${className}`} {...props}>{children}</div>;
 }
 
-interface CardFooterProps {
+interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
 }
 
-export function CardFooter({ children, className = '' }: CardFooterProps) {
-  return <div className={`p-6 pt-4 ${className}`}>{children}</div>;
+export function CardFooter({ children, className = '', ...props }: CardFooterProps) {
+  return <div className={`p-6 pt-4 ${className}`} {...props}>{children}</div>;
 }
